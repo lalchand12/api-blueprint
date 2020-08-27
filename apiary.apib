@@ -1248,7 +1248,7 @@ Response is structured as a top-level `<coSpaceUsers total=”N”>` tag with po
   <tr>
     <td>canPostMessage</td>
     <td>true|false</td>
-    <td>Whether this user is allowed to write messages in the coSpace</td>
+    <td>(removed in 3.0)Whether this user is allowed to write messages in the coSpace</td>
   </tr>
   <tr>
     <td>canRemoveSelf</td>
@@ -1392,7 +1392,7 @@ Finally, if a user creates a coSpace from the Cisco Meeting App, then `canDelete
     <td>false</td>
   </tr>
   <tr>
-    <td>canPostMessage</td>
+    <td>canPostMessage(removed in 3.0)</td>
     <td>true</td>
     <td>true</td>
     <td>false</td>
@@ -1450,7 +1450,7 @@ GET method performed on a `/coSpaces/<coSpaceId>/coSpaceUsers/<coSpaceUser ID>` 
               <canChangeUri>false</canChangeUri>
               <canChangeCallId>false</canChangeCallId>
               <canChangePasscode>false</canChangePasscode>
-              <canPostMessage>false</canPostMessage>
+              
               <canDeleteAllMessages>false</canDeleteAllMessages>
               <canRemoveSelf>false</canRemoveSelf>
               <canChangeNonMemberAccessAllowed>true</canChangeNonMemberAccessAllowed>
@@ -2116,8 +2116,7 @@ Each <coSpaceTemplate> tag may include the following elements:
 
 Creating, modifying, retrieving, enumerating and deleting coSpace template access method templates
 
-2.9 introduces the API node /coSpaceTemplates/<coSpace template ID>/accessMethodTemplates
-with the following request parameters:
+Version 2.9 introduces the API node '/coSpaceTemplates/<coSpace template id>/accessMethodTemplates' with the following request parameters:
 
 <table>
 <thead>
@@ -2156,13 +2155,12 @@ with the following request parameters:
 </tbody>
 </table>
 
-The API node /coSpaceTemplates/<coSpace template ID>/accessMethodTemplates
+The API node /coSpaceTemplates/<coSpace template id>/accessMethodTemplates
 supports the following operations:
-- POST to /coSpaceTemplates/<coSpace template ID>/accessMethodTemplates
-- PUT to /coSpaceTemplates/<coSpace template ID>/accessMethodTemplates/<access method template ID>
-- DELETE on /coSpaceTemplates/<coSpace template ID>/accessMethodTemplates/<access method template ID>
-- GET on /coSpaceTemplates/<coSpace template id>/accessMethodTemplates/<access method template id>
-, gives the following responses:
+- POST to `/coSpaceTemplates/<coSpace template id>/accessMethodTemplates`
+- PUT to `/coSpaceTemplates/<coSpace template id>/accessMethodTemplates/<access method template ID>`
+- DELETE on `/coSpaceTemplates/<coSpace template id>/accessMethodTemplates/<access method template ID>`
+- GET on `/coSpaceTemplates/<coSpace template id>/accessMethodTemplates/<access method template id>`, gives the following responses:
 
 <table>
 <thead>
@@ -2201,9 +2199,9 @@ supports the following operations:
 </tbody>
 </table>
 
-## Retrieve Access Method templates [GET /coSpaceTemplates/<coSpace template ID>/accessMethodTemplates{?offset,filter,limit, callLegProfileFilter }]
+## Retrieve Access Method templates [GET /coSpaceTemplates/{coSpacetemplateid}/accessMethodTemplates{?offset,filter,limit,callLegProfileFilter}]
 
-Enumerate GET on /coSpaceTemplates/<coSpace template ID>/accessMethodTemplates, gives the following responses:
+Enumerate GET on `/coSpaceTemplates/<coSpace template ID>/accessMethodTemplates`, gives the following responses:
 
 Response is structured as a top-level <accessMethodTemplates total="N"> tag with potentially multiple <accessMethodTemplate> elements within it.
 Each <accessMethodTemplate> tag may include the following elements:
@@ -2250,6 +2248,9 @@ Each <accessMethodTemplate> tag may include the following elements:
     + limit - a limit can be supplied to retrieve coSpace templates other than the first page in the notional list
     + filter (string) - supply filter=<string> to return just those coSpace templates that match the filter
     + callLegProfileFilter (string) - supply callLegProfileFilter=<string> to return just those coSpace access method templates that use the specified call leg profile
+
++ Response 200
+
 
 # Group Calling Out from a coSpace
 Adding a remote party to a coSpace requires that this coSpace has an active call from which connections can be made. Essentially this makes an initial call out from a
@@ -3279,7 +3280,7 @@ GET method performed on a `/callProfiles/<call profile id>` node. If the call pr
 
             <?xml version="1.0"?>
             <callProfile id="59f5a62e-18e5-4fd7-b841-d9d9b8d57b92">
-              <messageBoardEnabled>true</messageBoardEnabled>
+              
               <locked>false</locked>
               <streamingMode>automatic</streamingMode>
             </callProfile>
@@ -5816,27 +5817,27 @@ Response is structured as a top-level `<userProfiles total="N">` tag with potent
   <tr>
     <td>canCreateCoSpaces</td>
     <td>true|false</td>
-    <td>Whether a user associated with this user profile is permitted to create new coSpaces</td>
+    <td>(removed in 3.0)Whether a user associated with this user profile is permitted to create new coSpaces</td>
   </tr>
   <tr>
     <td>canCreateCalls</td>
     <td>true|false</td>
-    <td>Whether a user associated with this user profile is permitted to create new calls</td>
+    <td>(removed in 3.0)Whether a user associated with this user profile is permitted to create new calls</td>
   </tr>
   <tr>
     <td>canUseExternalDevices</td>
     <td>true|false</td>
-    <td>Whether a user associated with this user profile is permitted to use slave SIP devices</td>
+    <td>(removed in 3.0)Whether a user associated with this user profile is permitted to use slave SIP devices</td>
   </tr>
   <tr>
     <td>canMakePhoneCalls</td>
     <td>true|false</td>
-    <td>Whether a user associated with this user profile will be displayed the option to make phone calls in the client</td>
+    <td>(removed in 3.0)Whether a user associated with this user profile will be displayed the option to make phone calls in the client</td>
   </tr>
   <tr>
     <td>userToUserMessagingAllowed</td>
     <td>true|false</td>
-    <td>Whether a user associated with this user profile will be allowed to send and receive messages when in a point to point call with another user</td>
+    <td>(removed in 3.0)Whether a user associated with this user profile will be allowed to send and receive messages when in a point to point call with another user</td>
   </tr>
   <tr>
     <td>audioParticipationAllowed</td>
@@ -5861,12 +5862,12 @@ Response is structured as a top-level `<userProfiles total="N">` tag with potent
   <tr>
     <td>canReceiveCalls</td>
     <td>true|false</td>
-    <td>Determines whether or not a user associated with this user profile can receive incoming calls using the Cisco Meeting App. (From version 2.0)</td>
+    <td>(removed in 3.0)Determines whether or not a user associated with this user profile can receive incoming calls using the Cisco Meeting App. (From version 2.0)</td>
   </tr>
   <tr>
     <td>canSendEmailInvite</td>
     <td>true|false</td>
-    <td>Determines whether or not a Cisco Meeting App user associated with this user profile can email invitations to a meeting space. (From version 2.0)</td>
+    <td>(removed in 3.0)Determines whether or not a Cisco Meeting App user associated with this user profile can email invitations to a meeting space. (From version 2.0)</td>
   </tr>
 </table>
 
@@ -5904,7 +5905,7 @@ GET method performed on a `/userProfiles/<user profile id >` node. If the user p
 
             <?xml version="1.0"?>
             <userProfile id="49cede52-7ae8-4729-910c-57056f32ef44">
-              <canReceiveCalls>true</canReceiveCalls>
+              tbd
             </userProfile>
 
 # Group System Related Methods
@@ -5959,6 +5960,11 @@ Returns the elements on the left within a `<status>` element
         <td>clusterEnabled</td>
         <td>boolean</td>
         <td>If set to true then the Call Bridge is currently running with clustering enabled. This parameter is present from version 2.0 onwards</td>
+    </tr>
+    <tr>
+        <td>clusterId</td>
+        <td>ID</td>
+        <td>The Id that represents cluster that the Call Bridge is in, constant through-out the lifetime of the cluster. For the purposes of this parameter an unclustered Call Bridge is regarded as a cluster of 1, and so this para-meter will still have a value for a single Meeting Server instance.(3.0 onwards)</td>
     </tr>
     <tr>
         <td>cdrTime</td>
@@ -6038,6 +6044,7 @@ Returns a list of individual `<alarm>` elements. If there are no currently activ
 * callBridgeConnectionFailure - the CallBridge has failed to establish a connection to one of its peer clustered Call Bridges which specified by the accompanying "callBridge" GUID parameter
 * callDistributionFailure - the CallBridge has failed to establish a distributed link for one of its active calls; the Call Bridge that the link should have been to is identified by the accompanying "callBridgeName" text parameter, and the call is present as the "call" GUID parameter
 * cdrConnectionFailure - the Meeting Server has failed to establish a connection to its configured CDR receiver, and therefore may be unable to push out new call detail records
+* c2wConnectionFailure — the Call Bridge has been unable to establish a C2W connection to the configured Web Bridge(3.0 onwards)
 * databaseClusternodeOutofSync - a node in the database cluster is out of sync and is not syncing
 * databaseConnectionError - the Meeting Server has failed to establish a connection to its database
 * guestAccountConnectionFailure - the Meeting Server has been unable to establish a connection to the configured Web Bridge in order to allow guest logins
@@ -6322,9 +6329,15 @@ PUT or POST to `/system/profiles`. Supplying an empty value unsets the top-level
 GET methods performed on the `/system/licensing` node.
 
 ---
-**Note**: From version 2.4, a license is not required to apply single or multiple branding.
+**Note**: From version 2.4, a license is not required to apply single or multiple branding. 
+Previously, the existing `/system/licensing` API returned the contents of the license file, i.e. the feature components for a Meeting Server, together with each component's license status and expiry date (if applicable) shown. For example, whether the callbridge license was activated or not on that Meeting Server, and if licensed, the expiry date. 
+From 3.0, the existing /system/licensing API now only returns the contents of the license file (i.e. the feature components) on a per Meeting Server instance, and the newly introduced API object /clusterLicensing returns the license status and expiry date (if applicable) for a Meeting Server cluster.
+
+The new `/clusterLicensing` API represents the cluster (a single Meeting Server deployment is regarded as a cluster of one). The `/system/licensing` API that represents the license file contents continues to be per Meeting Server instance.
+
 
 ---
+
 
 <table>
   <tr>
@@ -6803,7 +6816,6 @@ GET method performed on the `/system/multipartyLicensing` node.
 
 GET method performed on `/system/multipartyLicensing/activePersonalLicenses`.
 
-
 <table>
   <tr>
     <th>Response elements</th>
@@ -6818,9 +6830,16 @@ GET method performed on `/system/multipartyLicensing/activePersonalLicenses`.
   <tr>
     <td>weightedCallsActive</td>
     <td>Number</td>
-    <td>Number of weighted active calls that use the license of this user (seenote above).</td>
+    <td>Number of weighted active calls that use the license of this user (see note below).</td>
   </tr>
 </table>
+
+---
+Note: the sum of weighted calls across a cluster matches the number of distinct calls on the cluster. For example, if CMS1 shows 3 callsActive and 2 weightedCallsActive, and CMS2 shows 2 callsActive and1 weightedCallsActive, then there are 3 conferences in total on the cluster and 3 licenses are required.
+
+
+---
+
 
 + Parameters
     + offset(number) - An "offset" can be supplied to retrieve active personal license entries other than those in the first "page" of the notional list
@@ -6831,6 +6850,7 @@ GET method performed on `/system/multipartyLicensing/activePersonalLicenses`.
 
             <?xml version="1.0"?>
             <activePersonalLicenses total="0"/>
+
 
 # License usage snapshots [/system/MPLicenseUsage]
 
@@ -6977,10 +6997,118 @@ host (id) - Unique host id of a Call Bridge whose license utilization informatio
                 <host id="8b6dc06e-6a0b-4983-aa9c-bf49826f7756"/>
             </knownHosts>
 
+## Retrieving cluster licensing information [GET /clusterLicensing]
+
+From 3.0 onwards , a GET operation on the existing `/system/licensing` API now only returns the contents of the license file (i.e. the feature components) on a per Meeting Server instance. The newly introduced API object `/clusterLicensing` returns the license status and expiry date (if applicable) for a Meeting Server cluster.
+
+---
+Note: The expiry date field returned for '/clusterLicensing' will only ever be up to a maximum of 90 days in the future.
+
+---
+
+To retrieve the current license information for your Meeting Server or cluster:
+
+GET method performed on '/clusterLicensing' gives the following:
+
+<table>
+<thead>
+  <tr>
+    <th>Response elements</th>
+    <th colspan="2">Type/Value</th>
+    <th>Description/Notes</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>features</td>
+    <td colspan="2"></td>
+    <td>If licensing is enabled then the &lt;features&gt; element includes the elements below.</td>
+  </tr>
+  <tr>
+    <td>callBridge</td>
+    <td>Name</td>
+    <td>Type/Value</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>status</td>
+    <td>noLicense|<br>activated|<br>expired</td>
+    <td>Status of the license:<br>- noLicense - no license is available for this feature<br><br>- activated - the feature is licensed and within its expiry date<br><br>- expired - the license for this feature is past its expiry date<br></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>expiry</td>
+    <td>String</td>
+    <td>Date of expiry</td>
+  </tr>
+  <tr>
+    <td>callBridgeNoEncryption</td>
+    <td>Name</td>
+    <td>Type/Value</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>status</td>
+    <td>noLicense|<br>activated|<br>expired</td>
+    <td>Status of the license:<br>- noLicense - no license is available for this feature<br><br>- activated - the feature is licensed and within its expiry date<br><br>- expired - the license for this feature is past its expiry date<br></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>expiry</td>
+    <td>String</td>
+    <td>Date of expiry</td>
+  </tr>
+  <tr>
+    <td>customizations</td>
+    <td>Name</td>
+    <td>Type/Value</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>status</td>
+    <td>noLicense|<br>activated|<br>expired</td>
+    <td>Status of the license:<br>- noLicense - no license is available for this feature<br><br>- activated - the feature is licensed and within its expiry date<br><br>- expired - the license for this feature is past its expiry date<br></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>expiry</td>
+    <td>String</td>
+    <td>Date of expiry</td>
+  </tr>
+  <tr>
+    <td>recording</td>
+    <td>Name</td>
+    <td>Type/Value</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>status</td>
+    <td>noLicense|<br>activated|<br>expired</td>
+    <td>Status of the license:<br>- noLicense - no license is available for this feature<br><br>- activated - the feature is licensed and within its expiry date<br><br>- expired - the license for this feature is past its expiry date<br></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>expiry</td>
+    <td>String</td>
+    <td>Date of expiry</td>
+  </tr>
+</tbody>
+</table>
+
+Version 3.0 introduces the /clusterLicensing/raw API which is purely for Cisco Meeting Management to give / retrieve license information to allow it to administer Smart Licensing. This API is not intended for general use and requires no administrator configuration.
+
++ Response 200
+
+
 
 # TURN Server Methods [/turnServers{?filter,offset,limit}]
 
 The TURN Server is not available on the Cisco Meeting Server 2000. It is more suited to the lower capacity Cisco Meeting Server 1000 and specification-based VM servers.
+
 
 ## Retrieving Information on TURN Servers [GET /turnServers{?filter,offset,limit}]
 
@@ -7175,10 +7303,469 @@ GET method performed on a `/webBridges/<webbridgeId>/status` node. If the web br
     <td>connectionFailure</td>
     <td>The Web Bridge could not connect to the queried Call Bridge</td>
   </tr>
+   <tr>
+    <td> </td>
+    <td>dnsFailure</td>
+    <td>The configured Web Bridge url could not be resolved (3.0 onwards)</td>
+  </tr>
 </table>
 
 
 + Response 200
+
+
+# Web Bridge Profile Methods [/webBridgeProfiles{?offset,limit,usageFilter}]
+
+This allows you to configure some Web Bridge configuration options in a common place rather than solely on a per Web Bridge basis — you can now apply the same settings for all, or a specified group of Web Bridges. 
+
+To support this change, the /webBridgeProfiles API object is introduced which contains the various Web Bridge configuration options. A newly defined Web Bridge profile can be assigned to the individual webBridge objects, or to the top level (global) profile or tenants. 
+
+There is a hierarchy of profiles — values in the profiles lower in the hierarchy override those set above, and if a parameter is unset or no web bridge profile is set then it inherits from the next profile up within the hierarchy. The hierarchy for webBridgeProfiles is:
+
+- Top level (global) profile (/system/profiles)
+- Tenants (/tenants/<tenant id>)
+- webBridges (/webBridges/<webbridge id>)
+
+## Retrieving web bridge profiles [GET]
+
+Enumeration of '/webBridgeProfiles' accepts the following URI parameters:
+
+Response is structured as a top-level <webBridgeProfiles total="N"> tag with potentially multiple <webBridgeProfile> elements within it.
+Each <webBridgeProfile> tag may include the following element:
+
+<table>
+<thead>
+  <tr>
+    <th>Response element</th>
+    <th>Type/Value</th>
+    <th>Description/Notes</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>name</td>
+    <td>String</td>
+    <td>The human-readable name associated with this web bridge profile (3.0 onwards)</td>
+  </tr>
+</tbody>
+</table>
+
++ Parameters
+    + offset (number) - An "offset" can be supplied to retrieve elements other than the first "page" in the notional list
+    + limit (number) - A "limit" can be supplied to retrieve elements other than the first "page" in the notional list
+    + usageFilter - (unreferenced |referenced) Supply "usageFilter=unreferenced" in the request to retrieve only those web bridge profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those web bridge profiles that are referenced in at least one place, you can supply "usageFilter=referenced" (3.0 onwards)
+
++ Response 200 (text/xml)
+    + Body
+
+            <?xml version="1.0"?>
+            <callBridges total="0"/>
+            
+            
+            
+            
+
+
+## Retrieving web bridge profile id [GET /webBridgeProfiles/{webBridgeProfileid}]
+
+GET on `/webBridgeProfiles/<webBridgeProfileid>` gives the following responses:
+
+  <table>
+            <thead>
+                <tr>
+                    <th>Response values</th>
+                    <th>Type/Value</th>
+                    <th>Description/Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>name</td>
+                    <td>String</td>
+                    <td>The human-readable name associated with this web bridge profile. (3.0 onwards)</td>
+                </tr>
+                <tr>
+                    <td>resourceArchive</td>
+                    <td>url</td>
+                    <td>Whether or not web bridges using this web bridge profile should allow users to lookup coSpaces (and coSpace access methods) with passcodes in combination with an numeric ID/URI. (3.0 onwards) </td>
+                </tr>
+                <tr>
+                    <td>allowPasscodes</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should allow users to lookup coSpaces (and coSpace access methods) with passcodes in combination with an numeric ID/URI. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>allowSecrets</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should allow users to access coSpaces (and coSpace access methods) through a meeting join link with a numeric id and secret. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>userPortalEnabled</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should display the sign in tab on the index page. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>allowUnauthenticatedGuests</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether to allow guest access from the landing screen on web bridges using this web bridge profile, or only allow visitor access once users have logged into the User Portal. If false, links work only for logged in users. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolveCoSpaceCallIds</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should accept coSpace and coSpace access method call IDs for the purpose of allowing visitors to join cospace meetings. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolveLyncConferenceIds</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>(Currently visible but non-functional.) Whether or not web bridges using this web bridge profile should accept IDs to be resolved to Lync scheduled conference IDs.(3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolveCoSpaceUris </td>
+                    <td>off | domainSuggestionDisabled |  domainSuggestionEnabled</td>
+                    <td >
+                        <p>Whether or not web bridges using this web bridge profile should accept coSpace and coSpace access method SIP URIs for the purpose of allowing visitors to join cospace meetings. (3.0 onwards)</p>
+                        <ul>
+                            <li>
+                                <p>when set to 'off' join by URI is disabled</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p>when set to 'domainSuggestionDisabled' join by URI is enabled but the domain of the URI&#160;won't be autocompleted or verified on web bridges using this web bridge profile</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p>when set to 'domainSuggestionEnabled' join by URI is enabled and the domain of the URI can be autocompleted and verified on web bridges using this web bridge profile</p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
++ Response 200 (text/xml)
+    + Body
+
+            <?xml version="1.0"?>
+            <webBridgeProfileid="b449de90-9dc5-4bed-9c65-a09a321d2bd9">
+              <name>TBD</name>
+            </webBridgeProfileid>
+
+
+## Creating and modifying web bridge profiles [POST]
+
+This `/webBridgeProfiles` object is used to implement web bridge profiles. This API node supports the following operations:
+
+* POST to `/webBridgeProfiles` to create a new web bridge profile
+* PUT on individual profiles with `/webBridgeProfiles/<webBridgeProfileid>`
+
+
++ Attributes (web bridge)
+
++ Response 200
+    + Headers
+
+            Location: /ap1/v1/webBridges/1f0e0bae-2ade-407a-9d79-c649a30b03d0
+
+
+
+## Retrieve the web bridge profile currently in effect on a specified web bridge [GET /effectiveWebBridgeProfile]
+
+Finding out the web bridge profile currently in effect on a specified web bridge
+
+The API object `/webBridges/<webbridgeid>/effectiveWebBridgeProfile` allows you to find out the web bridge profile and its associated values that are currently effective on a specified web bridge. 
+GET on `/webBridges/<webbridgeid>/effectiveWebBridgeProfile` gives the following responses:
+
+ <table>
+            <thead>
+                <tr>
+                    <th>Response values</th>
+                    <th>Type/Value</th>
+                    <th>Description/Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>resourceArchive</td>
+                    <td>url</td>
+                    <td>Whether or not web bridges using this web bridge profile should allow users to lookup coSpaces (and coSpace access methods) with passcodes in combination with an numeric ID/URI. (3.0 onwards) </td>
+                </tr>
+                <tr>
+                    <td>allowPasscodes</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should allow users to lookup coSpaces (and coSpace access methods) with passcodes in combination with an numeric ID/URI. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>allowSecrets</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should allow users to access coSpaces (and coSpace access methods) through a meeting join link with a numeric id and secret. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>userPortalEnabled</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should display the sign in tab on the index page. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>allowUnauthenticatedGuests</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether to allow guest access from the landing screen on web bridges using this web bridge profile, or only allow visitor access once users have logged into the User Portal. If false, links work only for logged in users. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolveCoSpaceCallIds</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should accept coSpace and coSpace access method call IDs for the purpose of allowing visitors to join cospace meetings. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolveLyncConferenceIds</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>(Currently visible but non-functional.) Whether or not web bridges using this web bridge profile should accept IDs to be resolved to Lync scheduled conference IDs.(3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolveCoSpaceUris </td>
+                    <td>off | domainSuggestionDisabled |  domainSuggestionEnabled</td>
+                    <td >
+                        <p>Whether or not web bridges using this web bridge profile should accept coSpace and coSpace access method SIP URIs for the purpose of allowing visitors to join cospace meetings. (3.0 onwards)</p>
+                        <ul>
+                            <li>
+                                <p>when set to 'off' join by URI is disabled</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p>when set to 'domainSuggestionDisabled' join by URI is enabled but the domain of the URI&#160;won't be autocompleted or verified on web bridges using this web bridge profile</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p>when set to 'domainSuggestionEnabled' join by URI is enabled and the domain of the URI can be autocompleted and verified on web bridges using this web bridge profile</p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
+
++ Response 200 (text/xml)
+    + Body
+
+            <?xml version="1.0"?>
+            <effectiveWebBridgeProfile="b449de90-9dc5-4bed-9c65-a09a321d2bd9">
+              <name>TBD</name>
+            </effectiveWebBridgeProfile>
+
+
+## Finding out the web bridge profile currently in effect at the top level (global) system level [GET /system/profiles/effectiveWebBridgeProfile]
+
+Finding out the web bridge profile currently in effect at the top level (global) system level
+
+This API object `/system/profiles/effectiveWebBridgeProfile` allows you to find out the web bridge profile and its associated values that are currently effective on this system. It supports the following operation:
+GET on `/system/profiles/effectiveWebBridgeProfile` gives the following responses:
+
+ <table>
+            <thead>
+                <tr>
+                    <th>Response values</th>
+                    <th>Type/Value</th>
+                    <th>Description/Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>resourceArchive</td>
+                    <td>url</td>
+                    <td>Whether or not web bridges using this web bridge profile should allow users to lookup coSpaces (and coSpace access methods) with passcodes in combination with an numeric ID/URI. (3.0 onwards) </td>
+                </tr>
+                <tr>
+                    <td>allowPasscodes</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should allow users to lookup coSpaces (and coSpace access methods) with passcodes in combination with an numeric ID/URI. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>allowSecrets</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should allow users to access coSpaces (and coSpace access methods) through a meeting join link with a numeric id and secret. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>userPortalEnabled</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should display the sign in tab on the index page. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>allowUnauthenticatedGuests</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether to allow guest access from the landing screen on web bridges using this web bridge profile, or only allow visitor access once users have logged into the User Portal. If false, links work only for logged in users. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolveCoSpaceCallIds</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should accept coSpace and coSpace access method call IDs for the purpose of allowing visitors to join cospace meetings. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolveLyncConferenceIds</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>(Currently visible but non-functional.) Whether or not web bridges using this web bridge profile should accept IDs to be resolved to Lync scheduled conference IDs.(3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolveCoSpaceUris </td>
+                    <td>off | domainSuggestionDisabled |  domainSuggestionEnabled</td>
+                    <td >
+                        <p>Whether or not web bridges using this web bridge profile should accept coSpace and coSpace access method SIP URIs for the purpose of allowing visitors to join cospace meetings. (3.0 onwards)</p>
+                        <ul>
+                            <li>
+                                <p>when set to 'off' join by URI is disabled</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p>when set to 'domainSuggestionDisabled' join by URI is enabled but the domain of the URI&#160;won't be autocompleted or verified on web bridges using this web bridge profile</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p>when set to 'domainSuggestionEnabled' join by URI is enabled and the domain of the URI can be autocompleted and verified on web bridges using this web bridge profile</p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+
+
++ Response 200 (text/xml)
+
+            
+
+
+## Retrieving the web bridge profile currently in effect on an individual tenant [GET /tenants/<tenant id>/effectiveWebBridgeProfile]
+
+The API object /tenants/<tenant id>/effectiveWebBridgeProfile allows you to find out the web bridge profile and its associated values that are currently effective on a specified tenant. It supports the following operation:
+
+GET on `/tenants/<tenant id>/effectiveWebBridgeProfile` gives the following responses:
+
+ <table>
+            <thead>
+                <tr>
+                    <th>Response values</th>
+                    <th>Type/Value</th>
+                    <th>Description/Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>resourceArchive</td>
+                    <td>url</td>
+                    <td>Whether or not web bridges using this web bridge profile should allow users to lookup coSpaces (and coSpace access methods) with passcodes in combination with an numeric ID/URI. (3.0 onwards) </td>
+                </tr>
+                <tr>
+                    <td>allowPasscodes</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should allow users to lookup coSpaces (and coSpace access methods) with passcodes in combination with an numeric ID/URI. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>allowSecrets</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should allow users to access coSpaces (and coSpace access methods) through a meeting join link with a numeric id and secret. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>userPortalEnabled</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should display the sign in tab on the index page. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>allowUnauthenticatedGuests</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether to allow guest access from the landing screen on web bridges using this web bridge profile, or only allow visitor access once users have logged into the User Portal. If false, links work only for logged in users. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolveCoSpaceCallIds</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>Whether or not web bridges using this web bridge profile should accept coSpace and coSpace access method call IDs for the purpose of allowing visitors to join cospace meetings. (3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolveLyncConferenceIds</td>
+                    <td>true | false</td>
+                    <td>
+                        <p>(Currently visible but non-functional.) Whether or not web bridges using this web bridge profile should accept IDs to be resolved to Lync scheduled conference IDs.(3.0 onwards)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolveCoSpaceUris </td>
+                    <td>off | domainSuggestionDisabled |  domainSuggestionEnabled</td>
+                    <td >
+                        <p>Whether or not web bridges using this web bridge profile should accept coSpace and coSpace access method SIP URIs for the purpose of allowing visitors to join cospace meetings. (3.0 onwards)</p>
+                        <ul>
+                            <li>
+                                <p>when set to 'off' join by URI is disabled</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p>when set to 'domainSuggestionDisabled' join by URI is enabled but the domain of the URI&#160;won't be autocompleted or verified on web bridges using this web bridge profile</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p>when set to 'domainSuggestionEnabled' join by URI is enabled and the domain of the URI can be autocompleted and verified on web bridges using this web bridge profile</p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
+
++ Response 200 (text/xml)
 
 
 # Call Bridge Methods [/callBridges{?offset,limit}]
@@ -8557,6 +9144,73 @@ Response is structured as a top-level <tenantGroups total=”N”> tag with pote
 ## Retrieving Detailed Information about an Individual Tenant Group [GET /tenantGroups/{tenantGroupId}]
 GET method performed on a `/tenantGroups/<tenant group id>` node. If the tenant ID supplied is valid, a “200 OK” response is received.
 
+<table>
+<thead>
+  <tr>
+    <th>Parameter</th>
+    <th>Type/Value</th>
+    <th>Description/Notes</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>name *</td>
+    <td>Text</td>
+    <td>A label for the tenant</td>
+  </tr>
+  <tr>
+    <td>tenantGroup</td>
+    <td>ID</td>
+    <td>If specified, the tenant group this tenant is associated with; the IDs of coSpaces in tenants within the same tenant group must be unique.</td>
+  </tr>
+  <tr>
+    <td>callLegProfile</td>
+    <td>ID</td>
+    <td>If specified, the specified call leg profile associated with this tenant</td>
+  </tr>
+  <tr>
+    <td>callProfile</td>
+    <td>ID</td>
+    <td>If specified, the specified call profile associated with this tenant</td>
+  </tr>
+  <tr>
+    <td>dtmfProfile</td>
+    <td>ID</td>
+    <td>If specified, the specified DTMF profile associated with this tenant</td>
+  </tr>
+  <tr>
+    <td>ivrBrandingProfile</td>
+    <td>ID</td>
+    <td>If specified, the specified IVR branding profile associated with this tenant</td>
+  </tr>
+  <tr>
+    <td>callBrandingProfile</td>
+    <td>ID</td>
+    <td>If specified, the specified call branding profile associated with this tenant</td>
+  </tr>
+  <tr>
+    <td>participantLimit</td>
+    <td>number</td>
+    <td>If specified, the limit on the number of participants associated with this tenant that can be simultaneously active; new participants beyond this limit will not be permitted.</td>
+  </tr>
+  <tr>
+    <td>userProfile</td>
+    <td>ID</td>
+    <td>If supplied, a user profile associated with this tenant; unless otherwise overridden, all users associated with this tenant will use this user profile</td>
+  </tr>
+  <tr>
+    <td>dialInSecurityProfile</td>
+    <td>ID</td>
+    <td>If specified, the specified dial-in security profile associated with this tenant (3.0 onwards)</td>
+  </tr>
+  <tr>
+    <td>webBridgeProfile</td>
+    <td>ID</td>
+    <td>If specified, the specified web bridge profile associated with this tenant (3.0 onwards)</td>
+  </tr>
+</tbody>
+</table>
+
 + Response 200 (text/xml)
     + Body
 
@@ -8714,7 +9368,7 @@ POST performed on the `/api/v1/uriUsageQuery` node.
 + canChangeUri: `false` (boolean) - Whether this user is allowed to change the URI of the coSpace
 + canChangeCallId: `false` (boolean) - Whether this user is allowed to change the Call ID of the coSpace
 + canChangePasscode: `false` (boolean) - Whether this user is allowed to change the passcode of the coSpace
-+ canPostMessage: `false` (boolean) - Whether this user is allowed to write messages in the coSpace
++ canPostMessage: `false` (boolean) - (removed in 3.0)Whether this user is allowed to write messages in the coSpace
 + canRemoveSelf: `false` (boolean) - Whether this user is allowed to remove himself from the coSpace
 + canDeleteAllMessages: `false` (boolean) - Whether this user is allowed to delete all messages from the coSpace message board
 + canChangeNonMemberAccessAllowed `true` (boolean) - Whether this user is allowed to change the “nonmember access allowed setting” of the coSpace. From version 2.3.
@@ -8788,7 +9442,7 @@ If provided as false - do not generate a new secret value for this coSpace acces
 ## inboundDialPlanRule
 + domain - The domain to match in order to apply the dial plan rule. Must be a complete value (e.g. "example.com")
 + priority (number) - inbound dial plan rules' configured domain values are always exactly matched against incoming calls. For the purposes of generating full URIs to advertise for incoming calls (especially cases where multiple rules are applicable) you can also set a numeric priority value - higher values will be preferred
-+ resolveToUsers (boolean) - If set to true, calls to this domain will be matched against user JIDs (if a match is then found, that incoming call leg causes a "point to point" call to that user's client
++ resolveToUsers (boolean) - (removed in 3.0)If set to true, calls to this domain will be matched against user JIDs (if a match is then found, that incoming call leg causes a "point to point" call to that user's client
 + resolveTocoSpaces (boolean) - If set to true, calls to this domain will be matched against coSpace URIs (if a match is then found, the incoming call leg becomes a participant in the coSpace)
 + resolveToIvrs (boolean) - If set to true, calls to this domain will be matched against configured IVR URIs (if a match is then found, the incoming call leg connects to that IVR)
 + resolveToLyncConferences (boolean) - If set to true, calls to this domain will be resolved to a Lync conference URI; if the resolution is successful, the incoming call leg becomes a participant in the Lync conference. If this parameter is not supplied in a create (POST) operation, it defaults to "false".
@@ -8828,7 +9482,7 @@ If set to true, new participants that need activation are not activated even if 
 
 ## callProfile
 + participantLimit (number) - Sets the maximum number of participants for calls (coSpace instantiations or ad hoc calls) using this call profile that can be active simultaneously; new participants beyond this limit are not permitted
-+ messageBoardEnabled (boolean) - If specified, sets whether a message board (chat) is allowed for this coSpace or ad hoc call
++ messageBoardEnabled (boolean) - (Removed in 3.0)If specified, sets whether a message board (chat) is allowed for this coSpace or ad hoc call
 + locked (boolean)
 + recordingMode (enum) - Controls how this coSpace or ad hoc call can be recorded. If this parameter is not supplied in a create (POST) operation, it defaults to "manual". Present from version 1.9 onwards
     + disabled - call is not recorded
@@ -9135,6 +9789,9 @@ If set to true, new participants that need activation are not activated even if 
 + userProfile (ID) - Sets the top level user profile to the one specified
 + ivrBrandingProfile (ID) - Sets the top level IVR branding profile to the one specified
 + callBrandingProfile (ID) - Sets the top level call branding profile to the one specified
++ compatibilityProfile (ID) - Sets the top level compatibility profile to the one specified (2.1 onwards)
++ dialInSecurityProfile (ID) - Sets the top level dial in security profile to the one specified (3.0 onwards)
++ webBridgeProfile (ID) - Sets the top level web bridge profile to the one specified (3.0 onwards)
 
 ## turnServer
 + serverAddress - The address for the Call Bridge to use to reach this TURN server
@@ -9154,25 +9811,39 @@ If set to true, new participants that need activation are not activated even if 
 ## WebBridge
 
 + url (URL) - The address for the Call Bridge to use to reach this Web Bridge
-+ resourceArchive (URL) - The address of any customization archive file for the Call Bridge to use or the background image and logo branding on the login page for this Web Bridge Note: When specifying the path any port value other than :80 for http and :443 for https is considered invalid.
++ resourceArchive (URL) - (removed in 3.0)The address of any customization archive file for the Call Bridge to use or the background image and logo branding on the login page for this Web Bridge Note: When specifying the path any port value other than :80 for http and :443 for https is considered invalid.
 + tenant (ID) - If you supply the ID for a tenant to associate with this Web Bridge, only call IDs for coSpaces owned by that tenant can be joined through it.
 + tenantGroup (ID) - Only coSpaces associated with tenants within the specified tenant group can be accessed by call ID through this web bridge. If no tenant group is supplied, only coSpaces without a tenant, or associated with a tenant in no tenant group, can be accessed by call ID.
-+ idEntryMode - Controls coSpace access via call ID and passcode; If this parameter is not supplied in a create (POST) operation, it defaults to secure. Note: Legacy mode is deprecated from version 2.3. If upgrading a Web Bridge from a 2.2 or earlier release that is configured to use 'legacy' mode, the Web Bridge will default to 'secure' mode in 2.3.
++ idEntryMode - (removed in 3.0)Controls coSpace access via call ID and passcode; If this parameter is not supplied in a create (POST) operation, it defaults to secure. Note: Legacy mode is deprecated from version 2.3. If upgrading a Web Bridge from a 2.2 or earlier release that is configured to use 'legacy' mode, the Web Bridge will default to 'secure' mode in 2.3.
     + disabled - access via call ID and passcode is disabled
     + secure - both the call ID and the passcode must be specified to look up and join a coSpace.
     + legacy - only a call ID need be specified to look up a coSpace. (Deprecated in 2.3) Note: Legacy mode is deprecated from version 2.3. If upgrading a Web Bridge from a 2.2 or earlier release that is configured to use 'legacy' mode, the Web Bridge will default to 'secure' mode in 2.3.
-+ allowWeblinkAccess - Whether this Web Bridge will allow users to access coSpace (and coSpace access methods) as guests by following a weblink. If this parameter is not supplied in a create (POST) operation, it defaults to true.
-+ showSignIn (boolean) - Whether this Web Bridge will display the sign in tab on the index page. If this parameter is not supplied in a create (POST) operation, it defaults to true.
-+ resolveCoSpace CallIds (boolean) - Whether this Web Bridge should accept coSpace and coSpace access method call IDs for the purpose of allowing visitors to join coSpaces. If this parameter is not supplied in a create (POST) operation, it defaults to true.
-+ resolveLync ConferenceIds (boolean) - Whether this Web Bridge will accept IDs to be resolved to Lync scheduled conference IDs. If this parameter is not supplied in a create (POST) operation, it defaults to false.
++ allowWeblinkAccess - (removed in 3.0)Whether this Web Bridge will allow users to access coSpace (and coSpace access methods) as guests by following a weblink. If this parameter is not supplied in a create (POST) operation, it defaults to true.
++ showSignIn (boolean) - (removed in 3.0)Whether this Web Bridge will display the sign in tab on the index page. If this parameter is not supplied in a create (POST) operation, it defaults to true.
++ resolveCoSpace CallIds (boolean) - (removed in 3.0)Whether this Web Bridge should accept coSpace and coSpace access method call IDs for the purpose of allowing visitors to join coSpaces. If this parameter is not supplied in a create (POST) operation, it defaults to true.
++ resolveLync ConferenceIds (boolean) - (removed in 3.0)Whether this Web Bridge will accept IDs to be resolved to Lync scheduled conference IDs. If this parameter is not supplied in a create (POST) operation, it defaults to false.
 + callBridge (ID) - If specified, associate this Web bridge with the supplied Call Bridge (from version 2.1)
 + callBridgeGroup (ID) - If specified, associate this Web bridge with the supplied Call Bridge group (from version 2.1)
++ webBridgeProfile (ID) - If specified, associates this web bridge with the specified web bridge profile.(3.0 onwards)
 
 ## call bridge
 + name (string) - The unique name for this configured clustered Call Bridge
 + address (string) - The address at which this Call Bridge in the cluster can be reached
 + sipDomain (string) - The SIP domain to use for establishing peer-to-peer links with this clustered Call Bridge
 + callBridgeGroup (ID) - If specified, associate this Call Bridge with the supplied Call Bridge group (from version 2.1)
+
+## web bridge
++ name (string) - The human-readable name associated with this web bridge profile. (3.0 onwards)
++ resourceArchive (URL) - The address of any customization archive file that the Meeting Server should use for web bridges using this web bridge profile. (3.0 onwards)
++ allowPasscodes - (boolean) - Whether or not web bridges using this web bridge profile should allow users to lookup coSpaces (and coSpace access methods) with passcodes in combination with an numeric ID/URI. If this parameter is not supplied in a create (POST) operation, it defaults to "true". (3.0 onwards)
++ allowSecrets - (boolean) - Whether or not web bridges using this web bridge profile should allow users to access coSpaces (and coSpace access methods) through a meeting join link with a numeric id and secret. If this parameter is not supplied in a create (POST) operation, it defaults to "true". (3.0 onwards)
++ userPortalEnabled - (boolean) - Whether or not web bridges using this web bridge profile should display the sign in tab on the index page. If this parameter is not supplied in a create (POST) operation, it defaults to "true". (3.0 onwards)
++ allowUnauthenticatedGuests - (boolean) - Whether to allow guest access from the landing screen on web bridges using this web bridge profile, or only allow visitor access once users have logged into the User Portal. If false, links work only for logged in users. If this parameter is not supplied in a create (POST) operation, it defaults to "true". (3.0 onwards)
++ resolveCoSpaceCallIds - (boolean) - Whether or not web bridges using this web bridge profile should accept coSpace and coSpace access method call IDs for the purpose of allowing visitors to join cospace meetings. If this parameter is not supplied in a create (POST) operation, it defaults to "true". (3.0 onwards)
++ resolveLyncConferenceIds - (boolean) - (Currently visible but non-functional.) Whether or not web bridges using this web bridge profile should accept IDs to be resolved to Lync scheduled conference IDs. If this parameter is not supplied in a create (POST) operation, it defaults to "false". (3.0 onwards)
++ resolveCoSpaceUris - (off | domainSugges-tionDisabled | domainSuggestionEnabled) - Whether or not this web bridge should accept coSpace and coSpace access method SIP URIs for the purpose of allowing visitors to join cospace meetings. (3.0 onwards). If this parameter is not supplied in a create (POST) operation, it defaults to "off". When set to 'off' join by URI is disabled. When set to 'domainSuggestionDisabled' join by URI is enabled but the domain of the URI won't be autocompleted or verified on web bridges using this web bridge profile. When set to 'domainSuggestionEnabled' join by URI is enabled and the domain of the URI can be autocompleted and verified on web bridges using this web bridge profile.
+
+
 
 ## call bridge group
 + name (string) - Optional name of the Call Bridge group
@@ -9293,6 +9964,8 @@ If set to true, new participants that need activation are not activated even if 
 + callBrandingProfile (ID) - If specified, associates the specified call branding profile with this tenant
 + participantLimit(number) - f specified, sets a limit on the number of participants associated with this tenant that can be simultaneously active; new participants beyond this limit will not be permitted.
 + userProfile(ID) - If supplied, a user profile to associate with this tenant; unless otherwise overridden, all users associated with this tenant will use this user profile.
++ dialInSecurityProfile (ID) - If specified, associates the specified dial-in security profile with this tenant (3.0 onwards)
++ webBridgeProfile (ID) - If specified, associates the specified web bridge profile with this tenant (3.0 onwards)
 
 ## accessQuery
 + uri(string) - The URI "user part" is the part before any '@' character in a full URI
@@ -9304,7 +9977,7 @@ If set to true, new participants that need activation are not activated even if 
 + tenant(ID) - If supplied, only those coSpaces, users and IVRs within the specified tenant will be returned. If omitted only entities without a tenant will be returned.
 
 ## layouttemplate
-+ name (string) - The human-readable name asso-ciated with this layout template
++ name (string) - The human-readable name associated with this layout template
 
 ## fecc
 + pan  - Pans the remote camera 'left' or 'right'.
